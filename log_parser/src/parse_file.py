@@ -22,7 +22,7 @@ def report_error(line):
     # TODO: handle errors separately
     print(f"ERROR: {line}")
 
-def main():
+def proces_file():
     filename = CONSTANTS["LOG_FILEPATH"]
     log_file = open(filename,'r')
     file_size = os.stat(filename)[6]
@@ -44,5 +44,3 @@ def main():
             json_data = parse_line(line.strip())
             if json_data:
                 write_to_db(json_data, influx)
-
-main()
