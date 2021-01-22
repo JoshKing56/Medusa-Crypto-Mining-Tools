@@ -1,6 +1,6 @@
 import os, time 
 from influxdb import InfluxDBClient
-from src.parse_file import parse_line
+from src.process_line import parse_line
 from conf.constants import CONSTANTS
 from conf.constants import INFLUX_INFO 
 
@@ -32,6 +32,7 @@ def proces_file():
                             username=INFLUX_INFO['USERNAME'],
                             password=INFLUX_INFO['PASSWORD'])
     dbname = INFLUX_INFO['DBNAME'] 
+    print(f"ping: {influx.ping()}")
     influx.create_database(dbname) #going to assume this gets ignored if it already exists for now
     influx.switch_database(dbname)
     while True:
